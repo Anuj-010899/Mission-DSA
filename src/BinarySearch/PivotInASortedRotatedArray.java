@@ -21,7 +21,7 @@ public class PivotInASortedRotatedArray {
 
     }
     public static void main(String[] args) {
-        int arr[]={12,13,14,3,5,7,8,9};
+        int arr[]={1};
         int pivot=getPivot(arr,arr.length);
         System.out.println(arr[pivot]);
     }
