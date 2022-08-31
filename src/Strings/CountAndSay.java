@@ -17,10 +17,8 @@ public class CountAndSay {
             int count=1;
             s=s+'&';
             for(int j=1;j<s.length();j++){
-
                 if(s.charAt(j-1)!=s.charAt(j)){
                     t+=count;
-
                     t+=s.charAt(j-1);
                     count=1;
                 }else{
