@@ -1,28 +1,42 @@
 package BinarySearch;
 
 public class SearchInRotatedSortedArray2 {
-    public static void main(String[] args) {
-        int arr[]={10,1,10,10,10};
-        int s=0;
-        int e=arr.length-1;
+    private static boolean search(int arr[],int s,int e,int key){
+
+        if(s>e){
+            return false;
+        }
 
         int mid=s+(e-s)/2;
 
-//        if(arr.length==1) return arr[0];
-//        if(arr.length==2) return Math.min(arr[0],arr[1]);
-//        if(arr[s]<arr[e]) return arr[0];
 
-        while(s<e){
-            if(arr[mid]<arr[e]){
-                e=mid;
-            }else if(arr[mid]>arr[e]){
-                s=mid+1;
-            }else{
+            if(arr[mid]==key)
+                return true;
+            if(arr[mid]==arr[e]){// This will handle the duplicates
                 e--;
+                return search( arr, s, e, key);
             }
-            mid=s+(e-s)/2;
-        }
 
-        System.out.println(arr[e]);
+            else if(arr[mid]<e){//Right Part is Sorted
+                if(key>arr[mid] && key <=arr[e]){
+                    return search( arr, mid+1, e, key);
+                }else{
+                    return search( arr, s, mid-1, key);
+                }
+            }else{//Left Part is Sorted
+                if(key>=arr[s] && key<arr[mid]){
+                    return search( arr, s, mid-1, key);
+                }else{
+                    return search( arr, mid+1, e, key);
+                }
+            }
+
+    }
+    public static void main(String[] args) {
+        int arr[]={1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+
+        int key=2;
+
+        System.out.println(search(arr,0,arr.length-1,key));
     }
 }
