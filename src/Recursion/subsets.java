@@ -23,7 +23,10 @@ public class subsets {
         List<Integer> output= new ArrayList<Integer>() ;
         int index=0;
         solve(nums,output,index,ans);
+        ans.forEach(innerList -> {
 
+            System.out.println(innerList);
+        });
 
     }
 
